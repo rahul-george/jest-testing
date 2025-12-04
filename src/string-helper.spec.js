@@ -46,7 +46,7 @@ describe("Reverse string", () => {
     });
 });
 
-describe.only("Caesar Cipher", () => {
+describe("Caesar Cipher", () => {
     test("caesarCipher exists", () => {
         expect(caesarCipher).toBeDefined();
     });

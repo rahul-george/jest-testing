@@ -11,7 +11,7 @@ function capitalise(text) {
 
 function reverseString(text) {
     throwIfNotString(text);
-    arr = [];
+    let arr = [];
     for (let i = text.length - 1; i >= 0; i--) {
         arr.push(text[i]);
     }
