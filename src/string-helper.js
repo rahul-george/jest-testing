@@ -5,4 +5,4 @@ function capitalise(text) {
     return text[0].toUpperCase() + text.slice(1);
 }
 
-module.exports = { capitalise };
+export { capitalise };

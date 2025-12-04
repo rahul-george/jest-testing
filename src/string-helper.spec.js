@@ -1,4 +1,4 @@
-const { capitalise } = require("./string-helper");
+import { capitalise } from "./string-helper";
 
 describe("Test Capitalise", () => {
     test("capitalise exists", () => {
