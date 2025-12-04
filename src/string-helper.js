@@ -18,4 +18,32 @@ function reverseString(text) {
     return arr.join("");
 }
 
-export { capitalise, reverseString };
+function shiftCharacter(character, shiftFactor) {
+    if (character >= "a" && character <= "z") {
+        return String.fromCharCode(
+            character.charCodeAt(0) + shiftFactor > "z".charCodeAt(0)
+                ? character.charCodeAt(0) + shiftFactor - 26
+                : character.charCodeAt(0) + shiftFactor
+        );
+    }
+
+    if (character >= "A" && character <= "Z") {
+        return String.fromCharCode(
+            character.charCodeAt(0) + shiftFactor > "Z".charCodeAt(0)
+                ? character.charCodeAt(0) + shiftFactor - 26
+                : character.charCodeAt(0) + shiftFactor
+        );
+    }
+
+    return character;
+}
+
+function caesarCipher(text, shiftFactor) {
+    let shiftedArr = Array.from(text).reduce((shiftedArr, character) => {
+        shiftedArr.push(shiftCharacter(character, shiftFactor));
+        return shiftedArr;
+    }, []);
+    return shiftedArr.join("");
+}
+
+export { capitalise, reverseString, caesarCipher };

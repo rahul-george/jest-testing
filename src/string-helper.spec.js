@@ -1,4 +1,4 @@
-import { capitalise, reverseString } from "./string-helper";
+import { capitalise, reverseString, caesarCipher } from "./string-helper";
 
 describe("Test Capitalise", () => {
     test("capitalise exists", () => {
@@ -44,4 +44,24 @@ describe("Reverse string", () => {
             reverseString(text);
         }).toThrow();
     });
+});
+
+describe.only("Caesar Cipher", () => {
+    test("caesarCipher exists", () => {
+        expect(caesarCipher).toBeDefined();
+    });
+
+    test.each([
+        { text: "abc", shiftFactor: 3, output: "def" },
+        { text: "abc?", shiftFactor: 3, output: "def?" },
+        { text: "a0c?", shiftFactor: 3, output: "d0f?" },
+        { text: "xyz", shiftFactor: 3, output: "abc" },
+        { text: "HeLLo", shiftFactor: 3, output: "KhOOr" },
+        { text: "Hello, World!", shiftFactor: 3, output: "Khoor, Zruog!" },
+    ])(
+        "shifts string by shiftFactor - $text",
+        ({ text, shiftFactor, output }) => {
+            expect(caesarCipher(text, shiftFactor)).toMatch(output);
+        }
+    );
 });
