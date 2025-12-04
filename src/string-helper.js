@@ -3,6 +3,12 @@ function throwIfNotString(text) {
         throw new Error(`${text} is not a valid string`);
 }
 
+function throwIfNotInt(value) {
+    if (typeof value !== "number" || !Number.isInteger(value)) {
+        throw new Error(`${text} is not a valid integer`);
+    }
+}
+
 function capitalise(text) {
     throwIfNotString(text);
     if (text === "") return "";
@@ -39,7 +45,10 @@ function shiftCharacter(character, shiftFactor) {
 }
 
 function caesarCipher(text, shiftFactor) {
-    let shiftedArr = Array.from(text).reduce((shiftedArr, character) => {
+    throwIfNotString(text);
+    throwIfNotInt(shiftFactor);
+    let shiftedArr = [];
+    shiftedArr = Array.from(text).reduce((shiftedArr, character) => {
         shiftedArr.push(shiftCharacter(character, shiftFactor));
         return shiftedArr;
     }, []);

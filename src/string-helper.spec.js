@@ -64,4 +64,22 @@ describe("Caesar Cipher", () => {
             expect(caesarCipher(text, shiftFactor)).toMatch(output);
         }
     );
+
+    test.each([0, false, 4.2, undefined])(
+        "Errors on non-strings for text - %s",
+        (text) => {
+            expect(() => {
+                caesarCipher(text, 2);
+            }).toThrow();
+        }
+    );
+
+    test.each([false, 4.2, undefined])(
+        "Errors on non-numbers for shiftFactor - %s",
+        (shiftFactor) => {
+            expect(() => {
+                caesarCipher("abc", shiftFactor);
+            }).toThrow();
+        }
+    );
 });
